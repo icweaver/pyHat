@@ -21,12 +21,12 @@ def savetrace(fname, trace, model):
 	import pickle
 	
 	with open(fname, 'wb') as buff:
-	pickle.dump({'model': model, 'trace': trace}, buff)
+		pickle.dump({'model': model, 'trace': trace}, buff)
 
 def loadtrace(fname):
 	"""Loads trace and model from pickle file."""
 	with open(fname, 'rb') as buff:
-	data = pickle.load(buff)  
+		data = pickle.load(buff)  
 
 	model, trace = data['model'], data['trace']
 	
