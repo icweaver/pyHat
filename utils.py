@@ -117,4 +117,4 @@ def loadtrace(fname):
 	return model, trace
 	
 def invPhi(y, mu = 0., sigma = 1.):
-    return sigma*np.sqrt(2*np.log(1/(sigma*np.sqrt(2*np.pi)*y)))
+    return mu + sigma*np.sqrt(2*np.log(1/(sigma*np.sqrt(2*np.pi)*y)))
