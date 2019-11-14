@@ -1,6 +1,8 @@
 def rank(x):
 	"""computes ranks for a 1D array using
 	the average method to break ties."""
+	import pandas as pd
+	
 	r = pd.DataFrame(x).rank().values[:,0] 
 	
 	if(len(x) != 0): #make sure that x has at least 1 element
@@ -25,6 +27,8 @@ def savetrace(fname, trace, model):
 
 def loadtrace(fname):
 	"""Loads trace and model from pickle file."""
+	import pickle
+	
 	with open(fname, 'rb') as buff:
 		data = pickle.load(buff)  
 
