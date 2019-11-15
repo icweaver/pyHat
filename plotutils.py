@@ -1,4 +1,4 @@
-from utils import *
+import utils
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
 
@@ -19,5 +19,5 @@ def rankplot(trace, nchains, rows, cols):
     
     for i in range(nchains):
         ax = fig.add_subplot(gs[i])
-        plt.hist(r[i], alpha = 0.8, bins = 50, histtype = 'bar', ec='black')
+        plt.hist(r[i], alpha = 0.8, bins = 50, histtype = 'bar', ec='black', density = True)
         ax.set_title(f"Chain : {i + 1}")
