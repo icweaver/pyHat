@@ -35,49 +35,6 @@ def rhat(trace, param, split=True):
     # rhat (eq. 4)
     return np.sqrt(post_var / W)
 
-def S_eff(x, param):
-    """ Returns estimate of effective sample size for a set of traces.
-        
-        Parameters
-        ----------
-        x : ndarray
-            M X N array of traces, where M is the number of chains
-            and N is the number of samples.
-        param : str
-            The parameter that is traced in `x` .
-        
-        Returns
-        ------- 
-        S : int
-            The effective sample size.
-           
-        NOTES
-        ----- 
-        This algorithm is adapted from the `pymc3` source code:
-        https://github.com/pymc-devs/pymc/blob/14d8e9fc03bf9be1c3508b8b4563561480f0b358/pymc/diagnostics.py#L497
-        with speed-up modifications from:
-        https://jwalton.info/Efficient-effective-sample-size-python/
-    """
-    M, N = x.shape # (number of chains) X (number of samples)
-    
-    # calculate autocorrelation
-    negative_autocorr = False
-    t = 1
-    variogram = lambda t: ((x[:, t:] - x[:, :(N - t)])**2).sum() / (M*(N - t))
-    rho = np.ones(N)
-    # Iterate until the sum of consecutive estimates of autocorrelation is negative
-    s2 = rhat(x, param)
-    while not negative_autocorr and (t < N):
-        rho[t] = 1. - variogram(t)/(2.*s2)
-        
-        if not t % 2:
-            negative_autocorr = sum(rho[t-1:t+1]) < 0
-        
-        t += 1
-        
-    S = int(M*N / (1 + 2*rho[1:t].sum()))
-    return S
-
 def rank(x):
 	"""computes ranks for a 1D array using
 	the average method to break ties."""
