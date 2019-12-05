@@ -32,7 +32,7 @@ def zscale_hist(trace):
     ----------
     trace : numpy array of trace"""
     
-    zscale = utils.zscale(trace_dvar)
+    zscale = utils.zscale(trace)
     
     for chain in zscale:
         plt.hist(chain, alpha = 0.5)
