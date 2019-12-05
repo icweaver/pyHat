@@ -55,6 +55,10 @@ def zscale(trace):
     z = sp.stats.norm.ppf((r - 0.5) / S).reshape(trace.shape)
     return z
 
+def rank_rhat(trace):
+    z = zscale(trace)
+    return rhat(z, split=True)
+
 def folded_split_rhat(trace):
     zeta = np.abs(trace - np.median(trace).reshape(-1, 1))
     zscale_folded = zscale(zeta)
