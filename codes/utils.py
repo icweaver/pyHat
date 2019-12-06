@@ -49,14 +49,17 @@ def rank(x):
         else:
                 raise Exception("You gave a 0 length array.")
 
-def zscale(trace):
-    S = len(trace.flatten())
-    r = rank(trace.flatten())
-    z = sp.stats.norm.ppf((r - 0.5) / S).reshape(trace.shape)
+def zscale(chains):
+    """
+    NDarray object for M chains for a specific parameter
+    """
+    S = len(chains.flatten())
+    r = rank(chains.flatten())
+    z = sp.stats.norm.ppf((r - 0.5) / S).reshape(chains.shape)
     return z
 
-def rank_rhat(trace):
-    z = zscale(trace)
+def rank_rhat(chains):
+    z = zscale(chains)
     return rhat(z, split=True)
 
 def folded_split_rhat(trace):
@@ -96,3 +99,23 @@ def invPhi(y, mu = 0., sigma = 1.):
 def print_percent_diff(x_n, x_0):
     percent_diff = (np.abs(x_n - x_0) / x_0)*100.
     print(f"percent difference: {percent_diff:.2f}%")
+
+def rhat_results(d):
+    #
+    # returns table of rhat values for parameter in dict (d)
+    #
+    index = [
+        "standard",
+        "split",
+        "ranked",
+        "folded"
+    ]
+    df_rhats = pd.DataFrame(index=index)
+    for param_name, param_chains in d.items():
+        rhat_standard = rhat(param_chains, split=False)
+        rhat_split = rhat(param_chains, split=True)
+        rhat_rank = rank_rhat(param_chains)
+        rhat_folded = folded_split_rhat(param_chains)
+        df_rhats[param_name] = [rhat_standard, rhat_split, rhat_rank, rhat_folded]
+        
+    return df_rhats
