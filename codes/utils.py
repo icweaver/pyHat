@@ -96,3 +96,23 @@ def invPhi(y, mu = 0., sigma = 1.):
 def print_percent_diff(x_n, x_0):
     percent_diff = (np.abs(x_n - x_0) / x_0)*100.
     print(f"percent difference: {percent_diff:.2f}%")
+
+def rhat_results(d):
+    #
+    # returns table of rhat values for parameter in dict (d)
+    #
+    index = [
+        "standard",
+        "split",
+        "ranked",
+        "folded"
+    ]
+    df_rhats = pd.DataFrame(index=index)
+    for param_name, param_chains in d.items():
+        rhat_standard = rhat(param_chains, split=False)
+        rhat_split = rhat(param_chains, split=True)
+        rhat_rank = rank_rhat(param_chains)
+        rhat_folded = folded_split_rhat(param_chains)
+        df_rhats[param_name] = [rhat_standard, rhat_split, rhat_rank, rhat_folded]
+        
+    return df_rhats
