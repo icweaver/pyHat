@@ -11,8 +11,9 @@ that is more robust in capturing mixing problems, especially near the tails. In
 this repository, we implement the python version of this Rhat metric. 
 
 In addition, [Vehtari et al. 2019](https://arxiv.org/pdf/1903.08008.pdf)
-proposes that rankplots replace traceplots as visual diagnostics for MCMC. We
-also implement a python version of rankplot that is able to take pymc3
+proposes that rankplots should replace traceplots as visual diagnostics for
+MCMC. 
+We also implement a python version of rankplot that is able to take pymc3
 MultiTrace chain objects as inputs. 
 
 ## Organization
