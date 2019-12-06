@@ -49,14 +49,17 @@ def rank(x):
         else:
                 raise Exception("You gave a 0 length array.")
 
-def zscale(trace):
-    S = len(trace.flatten())
-    r = rank(trace.flatten())
-    z = sp.stats.norm.ppf((r - 0.5) / S).reshape(trace.shape)
+def zscale(chains):
+    """
+    NDarray object for M chains for a specific parameter
+    """
+    S = len(chains.flatten())
+    r = rank(chains.flatten())
+    z = sp.stats.norm.ppf((r - 0.5) / S).reshape(chains.shape)
     return z
 
-def rank_rhat(trace):
-    z = zscale(trace)
+def rank_rhat(chains):
+    z = zscale(chains)
     return rhat(z, split=True)
 
 def folded_split_rhat(trace):

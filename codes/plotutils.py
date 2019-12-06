@@ -1,7 +1,7 @@
 import utils
 import matplotlib.pyplot as plt
 
-def rankplot(trace, nchains, rows, cols):
+def rankplot(trace, nchains, rows, cols, title=None, hist_kwargs=None):
     """Returns rank plot for a given chain.
     Parameters
     ----------
@@ -15,12 +15,23 @@ def rankplot(trace, nchains, rows, cols):
     fig = plt.figure(figsize=(17, 10))
     gs = GridSpec(rows, cols)
 
-    r = utils.rank(trace.flatten()).reshape(trace.shape)
+    ranks = utils.rank(trace.flatten()).reshape(trace.shape)
 
-    for i in range(nchains):
+    for i, r in enumerate(ranks):
         ax = fig.add_subplot(gs[i])
-        plt.hist(r[i], alpha = 0.8, bins = 50, histtype = 'bar', ec='black')
-        ax.set_title(f"Chain : {i + 1}")
+        if hist_kwargs is None: hist_kwargs = dict()
+        ax.hist(r, alpha=0.8, bins=50, histtype="bar", ec="black", 
+                **hist_kwargs)
+        ax.set_title(f"Chain: {i + 1}")
+        fig.suptitle(title, fontsize=16)
+
+    fig.tight_layout(rect=[0, 0.03, 1, 0.95])
+    plt.show()
+
+    #for i in range(nchains):
+    #    ax = fig.add_subplot(gs[i])
+    #    ax.hist(r[i], alpha = 0.8, bins = 50, histtype = 'bar', ec='black')
+    #    ax.set_title(f"Chain : {i + 1}")
 
 def zscale_hist(trace):
     """Returns histogram of rank normalized chains.
