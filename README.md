@@ -64,3 +64,5 @@ repo, but we are more than happy to share it upon request.
 and details the implementation of the modified $\widehat R$ diagnostic and
 visualization tools proposed by [Vehtari et al.
 (2019)](https://ui.adsabs.harvard.edu/abs/2019arXiv190308008V/abstract).**
+
+The write-up for this project is in [`Project_Summary_Notebook.ipynb`](https://github.com/icweaver/pyhat/blob/master/Project_Summary_Notebook.ipynb)
