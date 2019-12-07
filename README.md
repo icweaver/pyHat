@@ -48,11 +48,11 @@ pyhat
 ```
 
 The main implementation and notebooks detailing its use are:
-* [`codes/`](https://github.com/icweaver/pyhat/tree/master/codes) - implementation of modified $\widehat R$ statistics proposed by paper and tools to visualize them
-* [`examples/multiplanet/multiplanet.ipynb`](https://github.com/icweaver/pyhat/blob/master/examples/multiplanet/multiplanet.ipynb) - domain specific application (astronomy) of the tools described above
-* [`examples/rhat_variance/rhat_variance.ipynb`](https://github.com/icweaver/pyhat/blob/master/examples/rhat_variance/rhat_variance.ipynb) - increased variance example
-* [`examples/toymodel_gaussian/toymodel_2DGaussian.ipynb`](https://github.com/icweaver/pyhat/blob/master/examples/toymodel_gaussian/toymodel_2DGaussian.ipynb) - presentation of $\widehat R$ and visualization tools on a 2D Gaussian with changing correlation
-* [`examples/toymodel_gaussian/toymodel_gaussian.ipynb`](https://github.com/icweaver/pyhat/blob/master/examples/toymodel_gaussian/toymodel_gaussian.ipynb) - presentation of $\widehat R$ and visualization tools on a simple Gaussian distribution with changing variance
+* [`codes/`](https://nbviewer.jupyter.org/github/icweaver/pyhat/tree/master/codes/) - implementation of modified $\widehat R$ statistics proposed by paper and tools to visualize them
+* [`examples/multiplanet/multiplanet.ipynb`](https://nbviewer.jupyter.org/github/icweaver/pyhat/blob/master/examples/multiplanet/multiplanet.ipynb?flush_cache=true) - domain specific application (astronomy) of the tools described above
+* [`examples/rhat_variance/rhat_variance.ipynb`](https://nbviewer.jupyter.org/github/icweaver/pyhat/blob/master/examples/rhat_variance/rhat_variance.ipynb?flush_cache=True) - increased variance example
+* [`examples/toymodel_gaussian/toymodel_2DGaussian.ipynb`](https://nbviewer.jupyter.org/github/icweaver/pyhat/blob/master/examples/toymodel_gaussian/toymodel_2DGaussian.ipynb?flush_cache=true) - presentation of $\widehat R$ and visualization tools on a 2D Gaussian with changing correlation
+* [`examples/toymodel_gaussian/toymodel_gaussian.ipynb`](https://nbviewer.jupyter.org/github/icweaver/pyhat/blob/master/examples/toymodel_gaussian/toymodel_gaussian.ipynb?flush_cache=true) - presentation of $\widehat R$ and visualization tools on a simple Gaussian distribution with changing variance
 
 Note: the `data` folders holds intermediate results that can be loaded into each
 notebook to avoid running time-intensive cells again.
@@ -60,9 +60,9 @@ notebook to avoid running time-intensive cells again.
 repo, but we are more than happy to share it upon request.
 
 **We recommend starting with
-[`examples/toymodel_gaussian/toymodel_gaussian.ipynb`](https://github.com/icweaver/pyhat/blob/master/examples/toymodel_gaussian/toymodel_gaussian.ipynb) because it introduces
+[`examples/toymodel_gaussian/toymodel_gaussian.ipynb`](https://nbviewer.jupyter.org/github/icweaver/pyhat/blob/master/examples/toymodel_gaussian/toymodel_gaussian.ipynb?flush_cache=true) because it introduces
 and details the implementation of the modified $\widehat R$ diagnostic and
 visualization tools proposed by [Vehtari et al.
 (2019)](https://ui.adsabs.harvard.edu/abs/2019arXiv190308008V/abstract).**
 
-The write-up for this project is in [`Project_Summary_Notebook.ipynb`](https://github.com/icweaver/pyhat/blob/master/Project_Summary_Notebook.ipynb)
+The write-up for this project is in [`Project_Summary_Notebook.ipynb`](https://nbviewer.jupyter.org/github/icweaver/pyhat/blob/master/Project_Summary_Notebook.ipynb?flush_cache=true)
